@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
             val lowerBound = 1
             val upperBound = 20
             //get randomNumber and change the view
-            val randomNumber = null
 
             //if randomNumber is the winning number, then show a toast message
 //            val winningNumber = findViewById<EditText>(R.id.editText).text.toString()
@@ -27,15 +26,8 @@ class MainActivity : AppCompatActivity() {
 //                Toast.makeText(this,"You Won!", Toast.LENGTH_LONG).show()
 //            }
 
-            for(i in 5..10)
-            {
+            var randomNumber = displayRandomNumber(lowerBound, upperBound).toString()
 
-                val randomNumber = getRandomNumber(lowerBound,upperBound).toString()
-
-                findViewById<TextView>(R.id.textView).text = "You Rolled a : " + randomNumber + " !"
-                Log.i("Alexis", "Button is clicked" + randomNumber) //search the message by looking up the tag
-                Thread.sleep(1000)
-            }
 
             if(lowerBound.toString() == randomNumber){
                 Toast.makeText(this,"Critical Miss!", Toast.LENGTH_LONG).show()
@@ -48,10 +40,20 @@ class MainActivity : AppCompatActivity() {
 
 //            var randomNumber = getRandomNumber(1,20)
 //            buttonText = "You Rolled a : " + randomNumber + " !"
+
         }
     }
 
     private fun getRandomNumber(lowerBound: Int, upperBound: Int): Int {
         return (lowerBound..upperBound).random()
     }
+
+    private fun displayRandomNumber(lowerBound: Int, upperBound: Int): Int {
+        var randomNumber = getRandomNumber(lowerBound,upperBound)
+
+        findViewById<TextView>(R.id.textView).text = "You Rolled a : " + randomNumber + " !"
+        Log.i("Alexis", "Button is clicked" + randomNumber) //search the message by looking up the tag
+        return randomNumber;
+    }
+
 }
